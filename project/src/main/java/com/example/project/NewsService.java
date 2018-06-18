@@ -1,11 +1,6 @@
 package com.example.project;
 
-import java.util.Map;
-
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,8 +28,7 @@ public class NewsService {
 
 			String getUrl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=08a6a865d11f442687983ced62e1a67d";
 
-			JSONObject news = restTemplate.getForObject(getUrl, JSONObject.class, new News());
-			return new News();
+			return restTemplate.getForObject(getUrl, News.class);
 
 		} catch (Exception e) {
 			e.printStackTrace();
